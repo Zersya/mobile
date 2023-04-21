@@ -17,13 +17,13 @@ class _SplashPageState extends State<SplashPage> {
 
     final auth = FirebaseAuth.instance;
 
-    if (auth.currentUser == null) {
-      GetIt.I<NavigationHelper>().goToLogin();
-    } else {
-      Future<void>.delayed(const Duration(seconds: 2), () {
-        GetIt.I<NavigationHelper>().goToProfile();
-      });
-    }
+    Future<void>.delayed(const Duration(seconds: 2), () {
+      if (auth.currentUser == null) {
+        GetIt.I<NavigationHelper>().goToLogin();
+      } else {
+        GetIt.I<NavigationHelper>().goToMap();
+      }
+    });
   }
 
   @override

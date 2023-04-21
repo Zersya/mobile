@@ -132,6 +132,10 @@ class NavigationHelper {
     pushNamed('mappage');
   }
 
+  void goToMap() {
+    goNamed('mappage');
+  }
+
   void goToProfile() {
     goNamed('profilepage');
   }

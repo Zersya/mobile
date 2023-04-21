@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 
 /// Currency format for Rupiah ( IDR )
@@ -18,3 +19,7 @@ NumberFormat currencyFormatterIDR = NumberFormat.currency(
 /// Currency format for Rupiah ( IDR )
 NumberFormat currencyFormatterNoLeading =
     NumberFormat.currency(locale: 'id', decimalDigits: 0, name: '', symbol: '');
+
+String get username =>
+    FirebaseAuth.instance.currentUser?.displayName?.replaceAll(' ', '-') ??
+    'unknown';
