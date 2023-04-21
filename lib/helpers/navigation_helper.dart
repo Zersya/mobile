@@ -128,8 +128,8 @@ class NavigationHelper {
     goNamed('loginpage');
   }
 
-  void goToMap() {
-    goNamed('mappage');
+  void pushToMap() {
+    pushNamed('mappage');
   }
 
   void goToProfile() {

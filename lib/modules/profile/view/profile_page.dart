@@ -19,7 +19,7 @@ class ProfilePage extends StatelessWidget {
       children: [
         ElevatedButton(
           onPressed: () {
-            GetIt.I<NavigationHelper>().goToMap();
+            GetIt.I<NavigationHelper>().pushToMap();
           },
           child: const Text('Go to Map'),
         )
