@@ -93,7 +93,7 @@ class _AppBody extends StatelessWidget {
         }
       },
       child: MaterialApp.router(
-        title: 'Qazwa Mobile',
+        title: 'Loctra Mobile',
         debugShowCheckedModeBanner: false,
         useInheritedMediaQuery: true,
         routeInformationProvider: appRouter.routeInformationProvider,

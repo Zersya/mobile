@@ -218,6 +218,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/translations/
+    - assets/images/
     - .env
 
   fonts:

@@ -13,7 +13,7 @@ class LoginPage extends StatelessWidget {
       providers: providers,
       actions: [
         AuthStateChangeAction<SignedIn>((context, state) {
-          GetIt.I<NavigationHelper>().goToProfile();
+          GetIt.I<NavigationHelper>().goToMap();
         }),
       ],
     );
