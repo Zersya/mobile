@@ -6,7 +6,7 @@ import 'package:location_tracker/utils/constants.dart';
 import 'package:location_tracker/utils/enums.dart';
 
 class LocationRepository extends ApiServices {
-  Future<BaseResponse> sentData(Position position) async {
+  Future<BaseResponse<dynamic>> sentData(Position position) async {
     final timestamp = DateTime.now().millisecondsSinceEpoch;
 
     final batteryLevel = await Battery().batteryLevel;
@@ -21,8 +21,10 @@ class LocationRepository extends ApiServices {
       'battery': batteryLevel,
     };
 
-    final response = await post<void>(ApiEndPoint.kApiLocation,
-        queryParameters: queryParams);
+    final response = await post<void>(
+      ApiEndPoint.kApiLocation,
+      queryParameters: queryParams,
+    );
 
     if (response.status == ResponseStatus.success) {
       return BaseResponse<dynamic>.success(null);

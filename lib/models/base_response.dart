@@ -1,16 +1,12 @@
 // ignore_for_file: overridden_fields
 
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:location_tracker/helpers/flash_message_helper.dart';
 import 'package:location_tracker/models/meta.dart';
-import 'package:location_tracker/utils/constants.dart';
 import 'package:location_tracker/utils/enums.dart';
-import 'package:location_tracker/utils/extensions/string_extension.dart';
 import 'package:location_tracker/utils/typedefs.dart';
 import 'package:logger/logger.dart';
-import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Base class for handle response of dio request
 class ResponseOfRequest<T> extends BaseResponse<T> {
@@ -192,54 +188,6 @@ class BaseResponse<T> {
   /// Fail response state
   factory BaseResponse.failure(String? message) {
     return BaseResponse<T>(message: message, status: ResponseStatus.failed);
-  }
-
-  @Deprecated('Use [ErrorWrapper.asyncGuard] instead')
-
-  /// SHOULD NOT BE USE, FOR VOID RESPONSE SERVER REPOSITORY ONLY
-  /// IT DOES NOT CATCH ERROR VERY WELL
-  /// SOME OF THE BLOC [FormKnowYourCustomerBloc], [WithdrawalBloc],
-  /// [ActiveFundingCubit], [CheckPhoneCubit],
-  /// [DeleteAccountBloc], [EventCalendarCubit], [RepaymentDetailCubit]
-  /// IT IS NOT RECOMMENDED TO USE THIS FOR FUTURE BLOC
-  void when({
-    required void Function(
-      T data,
-    )
-        success,
-    required void Function(
-      String? message,
-    )
-        failure,
-  }) {
-    if (status == ResponseStatus.success) {
-      success(data as T);
-    } else {
-      Sentry.captureException(exception);
-
-      failure(message);
-    }
-  }
-
-  @Deprecated('Use [responseWrapper<T>] instead')
-
-  /// SHOULD NOT BE USE, FOR VOID RESPONSE SERVER ONLY
-  /// IT DOES NOT CATCH ERROR VERY WELL
-  /// SOME OF THE REPOSITORY LIKE USED THIS
-  /// [KnowYourCustomerRepository], [PortfolioRepository], [UserRepository]
-  /// IT IS NOT RECOMMENDED TO USE THIS FOR FUTURE REPOSITORY
-  R whenRepo<R>({
-    required R Function(
-      T data,
-    )
-        success,
-    required R Function(String? message) failure,
-  }) {
-    if (status == ResponseStatus.success) {
-      return success(data as T);
-    } else {
-      return failure(message);
-    }
   }
 
   /// Getter the response status success, failure

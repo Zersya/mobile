@@ -21,8 +21,8 @@ class NotificationHelper {
 
   /// Initialize notification service
   Future<void> initialize() async {
-    const initializationSettingsAndroid = AndroidInitializationSettings(
-        '@drawable/ic_stat_qazwa_initial_transparent');
+    const initializationSettingsAndroid =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     const initializationSettingsIOS = DarwinInitializationSettings();
 
@@ -42,7 +42,7 @@ class NotificationHelper {
       importance: Importance.max,
       priority: Priority.high,
       showWhen: false,
-      icon: '@drawable/ic_stat_qazwa_initial_transparent',
+      icon: '@mipmap/ic_launcher',
     );
 
     _platformChannelSpecifics =
@@ -101,7 +101,7 @@ class NotificationHelper {
               androidChannel.id,
               androidChannel.name,
               channelDescription: androidChannel.description,
-              icon: '@drawable/ic_stat_qazwa_initial_transparent',
+              icon: '@mipmap/ic_launcher',
             ),
           ),
         );

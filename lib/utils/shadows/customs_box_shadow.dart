@@ -8,6 +8,8 @@ class CustomBoxShadow extends BoxShadow {
     this.blurStyle = BlurStyle.normal,
   });
 
+  @override
+  // ignore: overridden_fields
   final BlurStyle blurStyle;
 
   @override

@@ -1,9 +1,8 @@
 // ignore_for_file: unnecessary_statements, use_build_context_synchronously
 
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:get_it/get_it.dart';
 import 'package:location_tracker/repositories/main_repository.dart';
 
 part 'app_state.dart';
@@ -14,8 +13,8 @@ class AppCubit extends Cubit<AppState> {
   final String lang;
 
   Future<void> init() async {
-    final _service = MainRepository();
-    await _service.init(lang);
+    final service = MainRepository();
+    await service.init(lang);
 
     await refresh();
   }
