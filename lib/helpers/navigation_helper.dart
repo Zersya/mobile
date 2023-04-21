@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:location_tracker/gen/colors.gen.dart';
 import 'package:location_tracker/modules/login/view/login_page.dart';
+import 'package:location_tracker/modules/map/view/map_page.dart';
 import 'package:location_tracker/modules/profile/view/profile_page.dart';
 import 'package:location_tracker/modules/splash/view/splash_page.dart';
 
@@ -52,6 +53,13 @@ class NavigationHelper {
             name: 'loginpage',
             builder: (context, routerState) {
               return const LoginPage();
+            },
+          ),
+          GoRoute(
+            path: '/map',
+            name: 'mappage',
+            builder: (context, routerState) {
+              return const MapPage();
             },
           ),
           GoRoute(
@@ -118,6 +126,10 @@ class NavigationHelper {
 
   void goToLogin() {
     goNamed('loginpage');
+  }
+
+  void goToMap() {
+    goNamed('mappage');
   }
 
   void goToProfile() {

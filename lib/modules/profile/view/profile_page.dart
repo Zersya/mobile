@@ -16,6 +16,14 @@ class ProfilePage extends StatelessWidget {
           GetIt.I<NavigationHelper>().goToLogin();
         }),
       ],
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            GetIt.I<NavigationHelper>().goToMap();
+          },
+          child: const Text('Go to Map'),
+        )
+      ],
     );
   }
 }
